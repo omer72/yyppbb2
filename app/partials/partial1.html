@@ -14,7 +14,7 @@
                     <li><a alt="Item 6" title="Item 6" ng-click="gameSelected('xbox')">xbox</a></li>
                 </ul>
                 </div>
-
+            <label ng-show="partner">{{partner}}</label>
             <form class="form-horizontal animated bounceInDown"  ng-show="gameType">
                 <div class="control-group">
                     <label class="control-label" style="font-size: 36px" >{{gameType}}</label>
@@ -36,7 +36,7 @@
                 <div class="control-group">
                     <div class="controls">
 
-                        <button type="submit" class="btn btn-primary" ng-disabled="!name || !email">Find Match</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="!name || !email" ng-click="submit()">Find Match</button>
                     </div>
                 </div>
             </form>
