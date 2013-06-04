@@ -14,6 +14,7 @@
             </div>
         <!--</div>-->
         <!--<div class="span10">-->
+            <label ng-show="partner">{{partner}}</label>
             <form class="form-horizontal animated bounceInDown" ng-show="gameType" style="padding-top: 300px; padding-left: 20px;">
                 <div class="control-group">
                     <label class="control-label" style="font-size: 36px; width: 400px; text-align: left">{{gameType}}</label>
@@ -37,7 +38,7 @@
                     <div class="control-group">
                         <div class="controls">
 
-                            <button type="submit" class="btn btn-primary" ng-disabled="!name || !email">Find Match</button>
+                            <button type="submit" class="btn btn-primary" ng-disabled="!name || !email" ng-click="submit()">Find Match</button>
                         </div>
                     </div>
                     </form>
