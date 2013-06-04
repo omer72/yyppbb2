@@ -45,6 +45,44 @@ exports.post = function (req, res) {
     }
 };
 
+var pingpong = new Array();
+var basketball = new Array();
+var foosball = new Array();
+
+exports.registerToGame = function (req, res) {
+    var email = req.params.email;
+    var game = req.params.game;
+
+    switch(game)
+    {
+        case 'pingpong':
+            pingpong.push(email);
+            if (pingpong.length == 1) {
+                res.json(email);
+            }
+            else if (pingpong.length == 2) {
+                var matcher = pingpong[0];
+
+                // TODO: send email
+
+                // clear array
+                pingpong = [];
+
+                // return first email
+                res.json(matcher);
+            }
+            break;
+        case 'basketball':
+            break;
+        case 'foosball':
+            break;
+        default:
+            //code to be executed if n is different from case 1 and 2
+    }
+
+
+};
+
 // POST
 
 exports.editPost = function (req, res) {

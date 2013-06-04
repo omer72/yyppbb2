@@ -126,6 +126,7 @@ app.get('/registerToGame/:email/:game', routes.registerToGame);
 
 app.get('/api/posts', api.posts);
 app.get('/api/post/:id', api.post);
+app.get('/api/registerToGame/:email/:game', api.registerToGame);
 
 app.post('/api/addPost', api.addPost);
 app.post('/api/editPost', api.editPost);

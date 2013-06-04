@@ -1,12 +1,4 @@
-/**
- * Created with JetBrains WebStorm.
- * User: oetrog
- * Date: 6/4/13
- * Time: 2:01 PM
- * To change this template use File | Settings | File Templates.
- */
-
-(function($, window, document, undefined){
+;(function($, window, document, undefined){
     var pluginName = 'circleMenu',
         defaults = {
             depth: 0,
@@ -54,7 +46,7 @@
                 'top-half':[180,360],
                 'top-left':[270,180],
                 'top-right':[270,360],
-                'full':[-90,270-Math.floor(360/(self.element.children('li').length - 1))],
+                'full':[-90,270-Math.floor(360/self.element.children('li').length)],
                 'bottom-right':[0,90]
             },
             dir;
@@ -287,3 +279,4 @@
         });
     };
 })(jQuery, window, document);
+
