@@ -3,10 +3,12 @@
 /* Controllers */
 
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+function MyCtrl1($scope) {
 
 
-function MyCtrl2() {
+
+    $scope.gameSelected = function(gameTypeName){
+        $scope.gameType = gameTypeName;
+    }
+
 }
-MyCtrl2.$inject = [];

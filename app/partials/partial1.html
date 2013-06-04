@@ -1,13 +1,46 @@
 <div class="container-fluid" style="height: 100%">
-    <div class="row-fluid" >
+    <div class="row-fluid">
         <div class="span2">
             <!--Sidebar content-->
         </div>
-        <div class="span10" style="background-image: url('./img/background.jpg');min-height: 983px;background-repeat: no-repeat">
-            <ul>
-                <li>test</li>
-                <li>test</li>
-            </ul>
+        <div class="span10" style="background-image: url('../img/background.jpg');min-height: 983px;background-repeat: no-repeat">
+            <div id="ex-corners">
+                <ul  >
+                    <li><a alt="Item 1" title="Item 1" ng-click="gameSelected('pingpong')">pingpong</a></li>
+                    <li><a alt="Item 2" title="Item 2" ng-click="gameSelected('basketball')">basketball</a></li>
+
+                    <li><a alt="Item 4" title="Item 4" ng-click="gameSelected('foosball')">foosball</a></li>
+                    <li><a  alt="Item 5" title="Item 5" ng-click="gameSelected('cupofcoffee')">cupofcoffee</a></li>
+                    <li><a alt="Item 6" title="Item 6" ng-click="gameSelected('xbox')">xbox</a></li>
+                </ul>
+                </div>
+
+            <form class="form-horizontal animated bounceInDown"  ng-show="gameType">
+                <div class="control-group">
+                    <label class="control-label" style="font-size: 36px" >{{gameType}}</label>
+
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Email</label>
+                    <div class="controls">
+                        <input type="text" id="inputEmail" placeholder="Email" class="input-medium search-query" ng-model="email">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputName">Name</label>
+                    <div class="controls">
+                        <input type="text" id="inputName" placeholder="Name" class="input-medium search-query" ng-model="name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+
+                        <button type="submit" class="btn btn-primary" ng-disabled="!name || !email">Find Match</button>
+                    </div>
+                </div>
+            </form>
+
             <!--Body content-->
         </div>
     </div>
