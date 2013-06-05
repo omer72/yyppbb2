@@ -32,14 +32,14 @@ function MyCtrl1($scope,$http) {
 
     $scope.submit = function(){
         //http://localhost:3000/api/registerToGame/alon.heller@gmail.com/pingpong/alon
-        $http.get('http://172.23.34.53:3000/api/registerToGame/' + $scope.email +'/'+ $scope.gameType + '/' + $scope.name).
+        $http.get('http://172.23.34.57:3000/api/registerToGame/' + $scope.email +'/'+ $scope.gameType + '/' + $scope.name).
             success(function(data,status,headers,config){
                 if (data == '"pending"'){
                     window.location.href = "raffle.html?a=#icon cloud | Have a nice day :-)||#time";
                 }else
                 if (data !=''){
 //                    $scope.partner = data;
-                    window.location.href = "raffle.html?a=#icon cloud |Your partner is |#countdown 3 |"+data;
+                    window.location.href = "raffle.html?a=#icon cloud |Your partner is ||#countdown 3 |"+data.replace("\"","");
                 }
             }).
             error(function (data, status, headers, config) {
