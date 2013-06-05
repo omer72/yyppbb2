@@ -26,19 +26,20 @@ function MyCtrl1($scope,$http) {
                 break;
         }
 
-        $scope.gameType = gameTypeParsed;
+        $scope.gameType = gameTypeName;
+        $scope.gameTypeParsed = gameTypeParsed;
     }
 
     $scope.submit = function(){
-
-        $http.get('http://172.23.34.52/requestgame.ashx?gameType='+ $scope.gameType+"&name="+$scope.name+"&email="+$scope.email).
+        //http://localhost:3000/api/registerToGame/alon.heller@gmail.com/pingpong/alon
+        $http.get('http://172.23.34.53:3000/api/registerToGame/' + $scope.email +'/'+ $scope.gameType + '/' + $scope.name).
             success(function(data,status,headers,config){
-                if (data == 'pending'){
-                    $scope.partner = "Once another partner will register you will get an email. Have a nice day :-)";
-                }
-                if (data !='' && data !="pending"){
-                    $scope.partner = data;
-                    window.location.href = "raffle.html?a="+data;
+                if (data == '"pending"'){
+                    window.location.href = "raffle.html?a=#icon cloud | Have a nice day :-)||#time";
+                }else
+                if (data !=''){
+//                    $scope.partner = data;
+                    window.location.href = "raffle.html?a=#icon cloud |Your partner is |#countdown 3 |"+data;
                 }
             }).
             error(function (data, status, headers, config) {

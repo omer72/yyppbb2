@@ -44,21 +44,27 @@ exports.post = function (req, res) {
         res.json(false);
     }
 };
+/*
+ http://172.23.34.52/requestgame.ashx?gametype=5&name=noy&email=noy.itzikowitz@alcatel-lucent.com
 
+ */
 var pingpong = new Array();
 var basketball = new Array();
 var foosball = new Array();
+var xbox = new Array();
+var cupofcoffee = new Array();
 
 exports.registerToGame = function (req, res) {
     var email = req.params.email;
-    var game = req.params.game;
+    var gametype = req.params.gametype;
+    var name = req.params.name;
 
-    switch(game)
+    switch(gametype)
     {
         case 'pingpong':
             pingpong.push(email);
             if (pingpong.length == 1) {
-                res.json(email);
+                res.json('pending');
             }
             else if (pingpong.length == 2) {
                 var matcher = pingpong[0];
@@ -73,8 +79,72 @@ exports.registerToGame = function (req, res) {
             }
             break;
         case 'basketball':
+            basketball.push(email);
+            if (basketball.length == 1) {
+                res.json('pending');
+            }
+            else if (basketball.length == 2) {
+                var matcher = basketball[0];
+
+                // TODO: send email
+
+                // clear array
+                basketball = [];
+
+                // return first email
+                res.json(matcher);
+            }
             break;
         case 'foosball':
+            foosball.push(email);
+            if (foosball.length == 1) {
+                res.json('pending');
+            }
+            else if (foosball.length == 2) {
+                var matcher = foosball[0];
+
+                // TODO: send email
+
+                // clear array
+                foosball = [];
+
+                // return first email
+                res.json(matcher);
+            }
+            break;
+        case 'cupofcoffee':
+            cupofcoffee.push(email);
+            if (cupofcoffee.length == 1) {
+                res.json('pending');
+            }
+            else if (cupofcoffee.length == 2) {
+                var matcher = cupofcoffee[0];
+
+                // TODO: send email
+
+                // clear array
+                cupofcoffee = [];
+
+                // return first email
+                res.json(matcher);
+            }
+            break;
+        case 'xbox':
+            xbox.push(email);
+            if (xbox.length == 1) {
+                res.json('pending');
+            }
+            else if (xbox.length == 2) {
+                var matcher = xbox[0];
+
+                // TODO: send email
+
+                // clear array
+                xbox = [];
+
+                // return first email
+                res.json(matcher);
+            }
             break;
         default:
             //code to be executed if n is different from case 1 and 2
@@ -83,6 +153,25 @@ exports.registerToGame = function (req, res) {
 
 };
 
+function sendmail() {
+    var email   = require("./path/to/emailjs/email");
+    var server  = email.server.connect({
+        user:    "ppyybbcc",
+        password:"alcatelucent",
+        host:    "smtp.gmail.com",
+        ssl:     true
+
+    });
+
+// send the message and get a callback with an error or details of the message that was sent
+    server.send({
+        text:    "i hope this works",
+        from:    "you <username@gmail.com>",
+        to:      "someone <someone@gmail.com>, another <another@gmail.com>",
+        cc:      "else <else@gmail.com>",
+        subject: "testing emailjs"
+    }, function(err, message) { console.log(err || message); });
+}
 // POST
 
 exports.editPost = function (req, res) {

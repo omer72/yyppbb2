@@ -17,6 +17,7 @@ exports.partials = function (req, res) {
 
 exports.registerToGame = function (req, res) {
     var email = req.params.email;
-    var game = req.params.game;
+    var gametype = req.params.gametype;
+    var name = req.params.name;
     res.render('registerToGame/');
 };

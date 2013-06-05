@@ -120,13 +120,13 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/login', routes.login);
 app.get('/partials/:name', routes.partials);
-app.get('/registerToGame/:email/:game', routes.registerToGame);
+app.get('/registerToGame/:email/:gametype/:name', routes.registerToGame);
 
 // JSON API
 
 app.get('/api/posts', api.posts);
 app.get('/api/post/:id', api.post);
-app.get('/api/registerToGame/:email/:game', api.registerToGame);
+app.get('/api/registerToGame/:email/:gametype/:name', api.registerToGame);
 
 app.post('/api/addPost', api.addPost);
 app.post('/api/editPost', api.editPost);
