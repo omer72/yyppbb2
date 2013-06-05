@@ -53,6 +53,11 @@ var basketball = new Array();
 var foosball = new Array();
 var xbox = new Array();
 var cupofcoffee = new Array();
+var pingpongname = new Array();
+var basketballname = new Array();
+var foosballname = new Array();
+var xboxname = new Array();
+var cupofcoffeename = new Array();
 
 exports.registerToGame = function (req, res) {
     var email = req.params.email;
@@ -63,16 +68,19 @@ exports.registerToGame = function (req, res) {
     {
         case 'pingpong':
             pingpong.push(email);
+            pingpongname.push(name);
+
             if (pingpong.length == 1) {
                 res.json('pending');
             }
             else if (pingpong.length == 2) {
-                var matcher = pingpong[0];
+                var matcher = pingpongname[0];
 
-                // TODO: send email
+                sendmail(pingpong[0], name);
 
                 // clear array
                 pingpong = [];
+                pingpongname = [];
 
                 // return first email
                 res.json(matcher);
@@ -80,16 +88,19 @@ exports.registerToGame = function (req, res) {
             break;
         case 'basketball':
             basketball.push(email);
+            basketballname.push(name);
+
             if (basketball.length == 1) {
                 res.json('pending');
             }
             else if (basketball.length == 2) {
-                var matcher = basketball[0];
+                var matcher = basketballname[0];
 
-                // TODO: send email
+                sendmail(basketball[0], name);
 
                 // clear array
                 basketball = [];
+                basketballname = [];
 
                 // return first email
                 res.json(matcher);
@@ -97,16 +108,19 @@ exports.registerToGame = function (req, res) {
             break;
         case 'foosball':
             foosball.push(email);
+            foosballname.push(name);
+
             if (foosball.length == 1) {
                 res.json('pending');
             }
             else if (foosball.length == 2) {
-                var matcher = foosball[0];
+                var matcher = foosballname[0];
 
-                // TODO: send email
+                sendmail(foosball[0], name);
 
                 // clear array
                 foosball = [];
+                foosballname = [];
 
                 // return first email
                 res.json(matcher);
@@ -114,16 +128,19 @@ exports.registerToGame = function (req, res) {
             break;
         case 'cupofcoffee':
             cupofcoffee.push(email);
+            cupofcoffeename.push(name);
+
             if (cupofcoffee.length == 1) {
                 res.json('pending');
             }
             else if (cupofcoffee.length == 2) {
-                var matcher = cupofcoffee[0];
+                var matcher = cupofcoffeename[0];
 
-                // TODO: send email
+                sendmail(cupofcoffee[0], name);
 
                 // clear array
                 cupofcoffee = [];
+                cupofcoffeename = [];
 
                 // return first email
                 res.json(matcher);
@@ -131,16 +148,19 @@ exports.registerToGame = function (req, res) {
             break;
         case 'xbox':
             xbox.push(email);
+            xboxname.push(email);
+
             if (xbox.length == 1) {
                 res.json('pending');
             }
             else if (xbox.length == 2) {
-                var matcher = xbox[0];
+                var matcher = xboxname[0];
 
-                // TODO: send email
+                sendmail(xbox[0], name);
 
                 // clear array
                 xbox = [];
+                xboxname = [];
 
                 // return first email
                 res.json(matcher);
@@ -153,8 +173,8 @@ exports.registerToGame = function (req, res) {
 
 };
 
-function sendmail() {
-    var email   = require("./path/to/emailjs/email");
+function sendmail(to, name) {
+    var email   = require("../emailjs/email.js");
     var server  = email.server.connect({
         user:    "ppyybbcc",
         password:"alcatelucent",
@@ -165,11 +185,10 @@ function sendmail() {
 
 // send the message and get a callback with an error or details of the message that was sent
     server.send({
-        text:    "i hope this works",
-        from:    "you <username@gmail.com>",
-        to:      "someone <someone@gmail.com>, another <another@gmail.com>",
-        cc:      "else <else@gmail.com>",
-        subject: "testing emailjs"
+        text:    "Greetings from ppyybbcc Services, We are happy to inform you that we found a partner for your game.",
+        from:    "ppyybbcc <ppyybbcc@gmail.com>",
+        to:      "matcher <" + to + ">",
+        subject: "<DO NOT REPLY> Go play"
     }, function(err, message) { console.log(err || message); });
 }
 // POST
