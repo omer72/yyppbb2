@@ -34,11 +34,11 @@ function MyCtrl1($scope,$http) {
         $http.get('http://172.23.34.52/requestgame.ashx?gameType='+ $scope.gameType+"&name="+$scope.name+"&email="+$scope.email).
             success(function(data,status,headers,config){
                 if (data == 'pending'){
-                    alert(data);
+                    $scope.partner = "Once another partner will register you will get an email. Have a nice day :-)";
                 }
                 if (data !='' && data !="pending"){
                     $scope.partner = data;
-                    $location.path('/raffle');
+                    window.location.href = "raffle.html?a="+data;
                 }
             }).
             error(function (data, status, headers, config) {

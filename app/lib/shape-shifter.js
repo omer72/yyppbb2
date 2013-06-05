@@ -32,7 +32,7 @@ var S = {
     if (i !== -1) {
       S.UI.simulate(decodeURI(action).substring(i + 3));
     } else {
-        S.UI.simulate('HTML5IL|#icon heart|WEBSTORM')
+      S.UI.simulate('CloudBand|#countdown 3|#icon cloud');
     }
 
     S.Drawing.loop(function () {
@@ -170,19 +170,8 @@ S.UI = (function () {
       value = getValue(current);
 
       switch (action) {
-        case 'first':
-            random_name = members[parseInt(Math.random() * members.length)].member.name;
-            console.log('first winner is '+random_name)
-            performAction('FIRST|WINNER|IS|#countdown|'+random_name);
-        break;
-        case 'second':
-            random_name = members[parseInt(Math.random() * members.length)].member.name;
-            console.log('first winner is '+random_name)
-            performAction('SECOND|WINNER|IS|#countdown|'+random_name);
-        break;
-
         case 'countdown':
-          value = parseInt(value) || 4;
+          value = parseInt(value) || 10;
           value = value > 0 ? value : 10;
 
           timedAction(function (index) {
@@ -195,7 +184,7 @@ S.UI = (function () {
             } else {
               S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
             }
-          }, 350, value, true);
+          }, 1000, value, true);
           break;
 
         case 'rectangle':
